@@ -18,7 +18,7 @@ fun SectionBiodata(image: ImageVector, title: String, subtitle: String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Icon(imageVector = image, contentDescription = null)
         Spacer(modifier = Modifier.size(8.dp))
-        Column() {
+        Column {
             Text(text = title, fontWeight = FontWeight.Bold)
             Text(text = subtitle)
         }

@@ -89,8 +89,7 @@ fun MainApp(
             }
 
             composable(
-                route = RouteScreen.DetailUser.route,
-                arguments = listOf(
+                route = RouteScreen.DetailUser.route, arguments = listOf(
                     navArgument(RouteScreen.DetailUser.usernameArgs) {
                         type = NavType.StringType
                     },
@@ -109,8 +108,7 @@ fun MainApp(
 
 @Composable
 fun BottomBar(
-    navHostController: NavHostController,
-    modifier: Modifier = Modifier
+    navHostController: NavHostController, modifier: Modifier = Modifier
 ) {
 
     val navBackStackEntry by navHostController.currentBackStackEntryAsState()
@@ -119,25 +117,25 @@ fun BottomBar(
         BottomBarMenu(
             title = stringResource(id = R.string.home),
             icon = Icons.Default.Home,
-            screen = RouteScreen.Home
-        ),
-        BottomBarMenu(
+            screen = RouteScreen.Home,
+            contentDescription = stringResource(id = R.string.home_page)
+        ), BottomBarMenu(
             title = stringResource(id = R.string.favorite),
             icon = Icons.Default.Favorite,
-            screen = RouteScreen.Favorite
-        ),
-        BottomBarMenu(
+            screen = RouteScreen.Favorite,
+            contentDescription = stringResource(id = R.string.favorite_page)
+
+        ), BottomBarMenu(
             title = stringResource(id = R.string.profile),
             icon = Icons.Default.Person,
-            screen = RouteScreen.Profile
+            screen = RouteScreen.Profile,
+            contentDescription = stringResource(id = R.string.about_page)
         )
     )
 
     if (navBackStackEntry?.destination?.route != RouteScreen.DetailUser.route) {
         BottomBarNavigation(
-            items = listMenuBottomBar,
-            navHostController = navHostController,
-            modifier = modifier
+            items = listMenuBottomBar, navHostController = navHostController, modifier = modifier
         )
     }
 
@@ -145,9 +143,7 @@ fun BottomBar(
 
 @Composable
 fun BottomBarNavigation(
-    items: List<BottomBarMenu>,
-    navHostController: NavHostController,
-    modifier: Modifier
+    items: List<BottomBarMenu>, navHostController: NavHostController, modifier: Modifier
 ) {
     val navBackStackEntry by navHostController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -161,8 +157,7 @@ fun BottomBarNavigation(
                 label = { Text(text = it.title) },
                 icon = {
                     Icon(
-                        imageVector = it.icon,
-                        contentDescription = it.title
+                        imageVector = it.icon, contentDescription = it.contentDescription
                     )
                 },
                 selected = currentRoute == it.screen.route,
@@ -175,8 +170,7 @@ fun BottomBarNavigation(
                         launchSingleTop = true
                     }
                 },
-
-                )
+            )
         }
     }
 
@@ -185,7 +179,7 @@ fun BottomBarNavigation(
 @Preview(showBackground = true)
 @Composable
 fun MainPreview() {
-    GithubUserCompose() {
+    GithubUserCompose {
         MainApp()
     }
 }
@@ -193,6 +187,7 @@ fun MainPreview() {
 data class BottomBarMenu(
     val title: String,
     val icon: ImageVector,
-    val screen: RouteScreen
+    val screen: RouteScreen,
+    val contentDescription: String
 )
 

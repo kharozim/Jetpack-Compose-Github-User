@@ -64,7 +64,7 @@ fun SectionSearch(
             Text(stringResource(R.string.search))
         },
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-        keyboardActions = KeyboardActions() {
+        keyboardActions = KeyboardActions {
             onSubmit(search)
         },
         modifier = modifier

@@ -179,7 +179,7 @@ private fun DataSection(
 @Preview(showBackground = true)
 @Composable
 fun DetailScreenPreview() {
-    MaterialTheme() {
+    MaterialTheme {
         DataSection(
             user = UserItem(
                 name = "Imron Nanda Marpaung",

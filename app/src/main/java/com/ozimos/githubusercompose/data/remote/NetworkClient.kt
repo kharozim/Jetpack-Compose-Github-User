@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 object NetworkClient {
 
     private const val BASE_URL = "https://api.github.com"
-    private const val TOKEN = "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"
+    private const val TOKEN = "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"
 
     private fun getClient(): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder()

@@ -23,4 +23,7 @@
     <string name="icon_email">Icon Email</string>
     <string name="icon_linkedin">Icon Lnkedin</string>
     <string name="icon_github">Icon Github</string>
+    <string name="about_page">about_page</string>
+    <string name="favorite_page">favorite_page</string>
+    <string name="home_page">home_page</string>
 </resources>

@@ -174,7 +174,7 @@ private fun Sosmed(
 @Preview(showBackground = true)
 @Composable
 fun ProfileScreenPreview() {
-    GithubUserCompose() {
+    GithubUserCompose {
         ProfileScreen()
     }
 }
