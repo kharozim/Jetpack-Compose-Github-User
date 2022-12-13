@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Github User Compose</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="click_me">Click me</string>
+    <string name="profile">Profile</string>
+    <string name="detail">Detail</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="no_data_found_message">Sorry, there is no data at this time displayed.</string>
+    <string name="my_name">M. ALI KHAROZIM</string>
+    <string name="my_email">kharozim06@gmail.com</string>
+    <string name="my_linkedin">kharozim</string>
+    <string name="my_github">kharozim</string>
+    <string name="email">Email</string>
+    <string name="place">Place</string>
+    <string name="username">Username</string>
+    <string name="icon_favorite">Icon Favorite</string>
+    <string name="image_detail_user">"Image Detail User"</string>
+</resources>
