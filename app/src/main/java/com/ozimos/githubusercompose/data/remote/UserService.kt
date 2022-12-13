@@ -18,14 +18,4 @@ interface UserService {
         @Path("username") username: String
     ): Response<UserItem>
 
-    @GET("/users/{username}/followers")
-    suspend fun getUserFollowers(
-        @Path("username") username: String
-    ): List<UserItem>
-
-    @GET("/users/{username}/following")
-    suspend fun getUserFollowing(
-        @Path("username") username: String
-    ): List<UserItem>
-
 }
