@@ -1,5 +1,8 @@
 package com.ozimos.githubusercompose.ui.screen.profile
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -31,8 +34,8 @@ import com.ozimos.githubusercompose.ui.theme.BlueGrey100
 import com.ozimos.githubusercompose.ui.theme.GithubUserCompose
 
 @Composable
-fun ProfileScreen(modifier: Modifier = Modifier
-    .background(color = androidx.compose.material3.MaterialTheme.colorScheme.background)
+fun ProfileScreen(
+    modifier: Modifier = Modifier,
 ) {
 
     Column(
@@ -40,6 +43,7 @@ fun ProfileScreen(modifier: Modifier = Modifier
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxSize()
+            .background(color = androidx.compose.material3.MaterialTheme.colorScheme.background)
             .verticalScroll(rememberScrollState())
     ) {
         Card(
@@ -57,7 +61,7 @@ fun ProfileScreen(modifier: Modifier = Modifier
                 Image(
                     painter = painterResource(id = R.drawable.img_profile),
                     contentScale = ContentScale.Crop,
-                    contentDescription = "Image Profile",
+                    contentDescription = stringResource(id = R.string.image_profile),
                     modifier = modifier
                         .size(120.dp)
                         .clip(CircleShape)
@@ -67,7 +71,7 @@ fun ProfileScreen(modifier: Modifier = Modifier
                 Text(
                     text = stringResource(id = R.string.my_name),
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.body1.copy(
+                    style = androidx.compose.material3.MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.Bold
                     )
                 )
@@ -79,43 +83,61 @@ fun ProfileScreen(modifier: Modifier = Modifier
 }
 
 @Composable
-private fun SosmedSection(modifier: Modifier) {
-    val context = LocalContext.current
+private fun SosmedSection(context: Context = LocalContext.current, modifier: Modifier) {
 
     Sosmed(
         image = painterResource(id = R.drawable.ic_email),
-        contentDescription = "Icon Email",
+        contentDescription = stringResource(id = R.string.icon_email),
         text = stringResource(id = R.string.my_email),
         modifier = modifier,
         onClick = {
-            Toast.makeText(context, "Email", Toast.LENGTH_SHORT).show()
+            sendEmail(context, "Send Email")
         }
     )
-    Spacer(modifier = modifier.size(12.dp))
+
 
     Sosmed(
         image = painterResource(id = R.drawable.ic_linkedin),
-        contentDescription = "Icon Linkedin",
+        contentDescription = stringResource(id = R.string.icon_linkedin),
         text = "@" + stringResource(id = R.string.my_linkedin),
         backgroundColor = Blue100,
         modifier = modifier,
         onClick = {
-            Toast.makeText(context, "Linkedin", Toast.LENGTH_SHORT).show()
+            val webIntent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/kharozim/"))
+            context.startActivity(Intent(webIntent))
         }
     )
-    Spacer(modifier = modifier.size(12.dp))
 
     Sosmed(
         image = painterResource(id = R.drawable.ic_github),
-        contentDescription = "Icon Github",
+        contentDescription = stringResource(id = R.string.icon_github),
         text = "@" + stringResource(id = R.string.my_github),
         backgroundColor = BlueGrey100,
         modifier = modifier,
         onClick = {
-            Toast.makeText(context, "Github", Toast.LENGTH_SHORT).show()
+            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kharozim/"))
+            context.startActivity(Intent(webIntent))
         }
     )
 }
+
+private fun sendEmail(context: Context, summary: String) {
+    val intent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_EMAIL, context.getString(R.string.my_email))
+        putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.send_email))
+        putExtra(Intent.EXTRA_TEXT, summary)
+    }
+
+    context.startActivity(
+        Intent.createChooser(
+            intent,
+            context.getString(R.string.send_email)
+        )
+    )
+}
+
 
 @Composable
 private fun Sosmed(
@@ -131,8 +153,9 @@ private fun Sosmed(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
+            .padding(vertical = 6.dp)
             .fillMaxWidth()
-            .shadow(elevation = 2.dp, shape = CircleShape, clip = true)
+            .shadow(elevation = 1.dp, shape = CircleShape)
             .clickable { onClick() }
             .background(color = backgroundColor)
             .padding(8.dp)
@@ -141,10 +164,10 @@ private fun Sosmed(
         Image(
             painter = image,
             contentDescription = contentDescription,
-            modifier = Modifier.size(18.dp)
+            modifier = Modifier.size(20.dp)
         )
         Spacer(modifier = Modifier.size(8.dp))
-        Text(text = text, fontSize = 10.sp)
+        Text(text = text, fontSize = 12.sp)
     }
 }
 

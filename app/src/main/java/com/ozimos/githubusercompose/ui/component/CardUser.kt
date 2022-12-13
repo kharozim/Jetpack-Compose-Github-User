@@ -1,6 +1,7 @@
 package com.ozimos.githubusercompose.ui.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -13,11 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
+import com.ozimos.githubusercompose.R
 import com.ozimos.githubusercompose.data.model.response.UserModel
 
 @Composable
@@ -44,6 +48,11 @@ fun CardUser(
                 modifier = modifier
                     .width(120.dp)
                     .height(120.dp)
+                    .border(
+                        width = 4.dp,
+                        color = androidx.compose.material3.MaterialTheme.colorScheme.primary,
+                        shape = CircleShape
+                    )
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop,
                 loading = {
@@ -73,7 +82,7 @@ fun CardUser(
                 Icon(
                     imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.Person,
                     tint = androidx.compose.material3.MaterialTheme.colorScheme.onPrimary,
-                    contentDescription = "Icon Follower",
+                    contentDescription = stringResource(id = R.string.icon_follower),
                     modifier = modifier
                         .clip(RoundedCornerShape(8.dp))
                         .background(

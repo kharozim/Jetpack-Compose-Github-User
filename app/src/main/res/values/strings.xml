@@ -16,5 +16,11 @@
     <string name="place">Place</string>
     <string name="username">Username</string>
     <string name="icon_favorite">Icon Favorite</string>
-    <string name="image_detail_user">"Image Detail User"</string>
+    <string name="image_detail_user">Image Detail User</string>
+    <string name="send_email">Send Email</string>
+    <string name="icon_follower">Icon Follower</string>
+    <string name="image_profile">Image Profile</string>
+    <string name="icon_email">Icon Email</string>
+    <string name="icon_linkedin">Icon Lnkedin</string>
+    <string name="icon_github">Icon Github</string>
 </resources>
